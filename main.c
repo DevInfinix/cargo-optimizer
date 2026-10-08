@@ -107,7 +107,7 @@ void calculateRatio()
 }
 void sortPackages()
 {
-    int i, j;
+    int i, j, swapped;
     struct Package temp;
     if(n == 0)
     {
@@ -118,8 +118,10 @@ void sortPackages()
     {
         p[i].ratio = p[i].value / p[i].weight;
     }
+    // Optimized bubble sort with early exit flag
     for(i = 0; i < n - 1; i++)
     {
+        swapped = 0;
         for(j = 0; j < n - i - 1; j++)
         {
             if(p[j].ratio < p[j + 1].ratio)
@@ -127,7 +129,12 @@ void sortPackages()
                 temp = p[j];
                 p[j] = p[j + 1];
                 p[j + 1] = temp;
+                swapped = 1;
             }
+        }
+        if(!swapped)
+        {
+            break;
         }
     }
     printf("\nPackages sorted by Value/Weight ratio (descending).\n");
