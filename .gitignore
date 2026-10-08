@@ -1,0 +1,18 @@
+# Build artifacts
+*.exe
+*.o
+*.obj
+*.out
+build/
+
+# Development & Planning prompts
+ai-workflow-master-prompt.md
+code.md
+
+# IDE & Editor settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
