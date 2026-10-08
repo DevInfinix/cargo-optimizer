@@ -182,6 +182,10 @@ void displaySelected()
     float remaining;
     float totalValue = 0;
     float totalWeight = 0;
+    int fullyLoaded = 0;
+    int partiallyLoaded = 0;
+    int skipped = 0;
+
     if(n == 0)
     {
         printf("\nPlease enter package details first.\n");
@@ -204,6 +208,7 @@ void displaySelected()
             totalWeight += p[i].weight;
             totalValue += p[i].value;
             remaining -= p[i].weight;
+            fullyLoaded++;
             printf("|   %4d  |     100.0%%    | %12.2f | %12.2f | FULL     |\n",
                    p[i].no,
                    p[i].weight,
@@ -214,12 +219,21 @@ void displaySelected()
             p[i].quantity = remaining / p[i].weight;
             totalWeight += remaining;
             totalValue += (p[i].quantity * p[i].value);
+            partiallyLoaded++;
             printf("|   %4d  |     %5.1f%%    | %12.2f | %12.2f | FRACTION |\n",
                    p[i].no,
                    p[i].quantity * 100.0f,
                    remaining,
                    p[i].quantity * p[i].value);
             remaining = 0;
+        }
+        else
+        {
+            skipped++;
+            printf("|   %4d  |       0.0%%    | %12.2f | %12.2f | SKIPPED  |\n",
+                   p[i].no,
+                   0.0f,
+                   0.0f);
         }
     }
     float utilization = (capacity > 0) ? (totalWeight / capacity) * 100.0f : 0.0f;
@@ -228,6 +242,9 @@ void displaySelected()
     printf("Total Weight Loaded    : %.2f kg\n", totalWeight);
     printf("Capacity Utilization   : %.2f%%\n", utilization);
     printf("Maximum Cargo Value    : $%.2f\n", totalValue);
+    printf("Loaded Packages (Full) : %d\n", fullyLoaded);
+    printf("Split Packages (Frac)  : %d\n", partiallyLoaded);
+    printf("Skipped Packages       : %d\n", skipped);
     printf("===================================================================\n");
 }
 void loadSampleData()
