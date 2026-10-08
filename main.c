@@ -222,6 +222,27 @@ void displaySelected()
     printf("Maximum Cargo Value    : $%.2f\n", totalValue);
     printf("===================================================================\n");
 }
+void loadSampleData()
+{
+    n = 5;
+    capacity = 60.0f;
+
+    // Preset cargo packages: value, weight
+    float sampleValues[5] = {280.0f, 100.0f, 120.0f, 120.0f, 240.0f};
+    float sampleWeights[5] = {10.0f, 20.0f, 30.0f, 24.0f, 16.0f};
+
+    for(int i = 0; i < n; i++)
+    {
+        p[i].no = i + 1;
+        p[i].value = sampleValues[i];
+        p[i].weight = sampleWeights[i];
+        p[i].ratio = 0.0f;
+        p[i].quantity = 0.0f;
+    }
+
+    printf("\nBenchmark dataset loaded successfully (5 packages, Capacity: %.2f kg).\n", capacity);
+    displayDetails();
+}
 int main()
 {
     int choice;
@@ -237,7 +258,8 @@ int main()
         printf("  4. Sort Packages by Ratio\n");
         printf("  5. Find Maximum Cargo Value\n");
         printf("  6. Display Optimal Cargo Manifest\n");
-        printf("  7. Exit\n");
+        printf("  7. Load Benchmark Sample Dataset\n");
+        printf("  8. Exit\n");
         printf("===================================================\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -262,12 +284,15 @@ int main()
                 displaySelected();
                 break;
             case 7:
-                printf("\nProgram ended.\n");
+                loadSampleData();
+                break;
+            case 8:
+                printf("\nExiting Cargo Dispatch Optimizer. Safe transport!\n");
                 break;
             default:
                 printf("\nInvalid choice. Please try again.\n");
         }
-    } while(choice != 7);
+    } while(choice != 8);
     return 0;
 }
  
