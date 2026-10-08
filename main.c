@@ -24,26 +24,48 @@ float capacity = 0;    // Maximum carrying capacity of vehicle
 void enterDetails()
 {
     int i;
-    printf("\nEnter number of packages: ");
+    printf("\nEnter number of packages (1 to %d): ", MAX);
     scanf("%d", &n);
     getchar();
+
+    if(n <= 0 || n > MAX)
+    {
+        printf("Invalid package count! Please enter a value between 1 and %d.\n", MAX);
+        n = 0;
+        return;
+    }
+
     for(i = 0; i < n; i++)
     {
         p[i].no = i + 1;
- 
+
         printf("\nPackage %d\n", i + 1);
- 
+
         printf("Enter value/profit: ");
         scanf("%f", &p[i].value);
- 
+
         printf("Enter weight: ");
         scanf("%f", &p[i].weight);
- 
+
+        while(p[i].weight <= 0)
+        {
+            printf("Weight must be greater than 0. Re-enter weight: ");
+            scanf("%f", &p[i].weight);
+        }
+
         p[i].ratio = 0;
         p[i].quantity = 0;
     }
+
     printf("\nEnter vehicle capacity: ");
     scanf("%f", &capacity);
+
+    while(capacity <= 0)
+    {
+        printf("Capacity must be greater than 0. Re-enter vehicle capacity: ");
+        scanf("%f", &capacity);
+    }
+
     printf("\nPackage details entered successfully.\n");
 }
 void displayDetails()
