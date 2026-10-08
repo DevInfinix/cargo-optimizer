@@ -169,6 +169,7 @@ void findMaximum()
             totalWeight = totalWeight + remaining;
             totalValue = totalValue + (p[i].quantity * p[i].value);
             remaining = 0;
+            break;
         }
     }
     float utilization = (capacity > 0) ? (totalWeight / capacity) * 100.0f : 0.0f;
