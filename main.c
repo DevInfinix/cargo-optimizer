@@ -76,7 +76,8 @@ void displayDetails()
         printf("\nPlease enter package details first.\n");
         return;
     }
-    printf("\n+---------+--------------+--------------+--------------+\n");
+    printf("\nVehicle Capacity Limit: %.2f kg\n", capacity);
+    printf("+---------+--------------+--------------+--------------+\n");
     printf("| Package |    Value ($) |  Weight (kg) | Ratio ($/kg) |\n");
     printf("+---------+--------------+--------------+--------------+\n");
     for(i = 0; i < n; i++)
