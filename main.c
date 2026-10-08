@@ -163,8 +163,10 @@ void findMaximum()
             remaining = 0;
         }
     }
+    float utilization = (capacity > 0) ? (totalWeight / capacity) * 100.0f : 0.0f;
     printf("\nMaximum Value Obtained : $%.2f\n", totalValue);
     printf("Total Weight Loaded    : %.2f kg\n", totalWeight);
+    printf("Capacity Utilization   : %.2f%%\n", utilization);
 }
 void displaySelected()
 {
@@ -212,9 +214,11 @@ void displaySelected()
             remaining = 0;
         }
     }
+    float utilization = (capacity > 0) ? (totalWeight / capacity) * 100.0f : 0.0f;
     printf("+---------+--------------+--------------+--------------+----------+\n");
     printf("Vehicle Capacity       : %.2f kg\n", capacity);
     printf("Total Weight Loaded    : %.2f kg\n", totalWeight);
+    printf("Capacity Utilization   : %.2f%%\n", utilization);
     printf("Maximum Cargo Value    : $%.2f\n", totalValue);
     printf("===================================================================\n");
 }
