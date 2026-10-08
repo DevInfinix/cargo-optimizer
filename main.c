@@ -1,16 +1,26 @@
+/*
+ * Cargo Optimizer - Fractional Knapsack Solver
+ * Optimal vehicle package loading using Greedy approach
+ */
+
 #include <stdio.h>
+
 #define MAX 50
+
+// Structure to store package attributes
 struct Package
 {
-    int no;
-    float value;
-    float weight;
-    float ratio;
-    float quantity;
+    int no;            // Package identification number
+    float value;       // Profit / value of the package
+    float weight;      // Weight of the package in kg
+    float ratio;       // Profit-to-weight ratio (value / weight)
+    float quantity;    // Fraction loaded into vehicle (0.0 to 1.0)
 };
+
+// Global state variables
 struct Package p[MAX];
-int n = 0;
-float capacity = 0;
+int n = 0;             // Total number of available packages
+float capacity = 0;    // Maximum carrying capacity of vehicle
 void enterDetails()
 {
     int i;
